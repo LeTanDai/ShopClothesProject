@@ -141,3 +141,14 @@ select * from [dbo].[Product]
 select * from [dbo].[Payment]
 select * from [dbo].[Orders]
 
+UPDATE Product
+SET prod_name = 'Hand Painted Donald Duck Regular Men'
+WHERE productId = 2;
+
+UPDATE Product
+SET prod_name = 'Men Short Sleeve Cafe Shirt with Pocket'
+WHERE productId = 8;
+
+UPDATE Product
+SET prod_name = 'Men 3C 2-Layer Sports Windbreaker'
+WHERE productId = 12;
