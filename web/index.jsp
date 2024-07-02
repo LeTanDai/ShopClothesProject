@@ -63,22 +63,21 @@
                         <div class="row">
                             <div class="span12">
                                 <h4 class="title">
-                                    <span class="pull-left"><strong>Signature Products</strong></span>
+                                    <span class="pull-left"><strong>All Products</strong></span>
                                 </h4>
                                 <div id="product-list">
-                                    <ul class="row thumbnails">
-                                    <c:forEach items="${listP}" var="product" varStatus="loop">
-                                        <c:if test="${loop.index < 4}">
+                                    <ul   class="row thumbnails">
+                                    <c:forEach items="${listP}" var="product">
+                                       
                                             <li class="span3">
-                                                <div class="product-box">
+                                                <div style="height: 350px; width: 100%" class="product-box">
                                                     <span class="sale_tag"></span>
-                                                    <img src="${product.image}" alt="" />
+                                                    <img src="${product.image}" alt="" style="width: 70%"/>
                                                     <a href="#" class="title">${product.name}</a><br/>
                                                     <a href="products.jsp" class="category">Commodo consequat</a>
                                                     <p class="price">${product.price}</p>
                                                 </div>
                                             </li>
-                                        </c:if>
                                     </c:forEach>
 
                                 </ul>
