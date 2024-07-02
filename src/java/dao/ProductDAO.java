@@ -33,11 +33,27 @@ public class ProductDAO extends DBContext{
         }
         return list;
     }
+    
+    public Product getProductById(int id){
+        ProductDAO productDAO = new ProductDAO();
+        try{
+            List<Product> list = productDAO.getAllProducts();
+            for(Product p: list){
+                if(p.getId()==id){
+                    return p;
+                }
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         ProductDAO productDAO = new ProductDAO();
         try{
-            List<Product>list = productDAO.getAllProducts();
-            System.out.println(list);
+            Product p = productDAO.getProductById(1);
+            System.out.println(p);
         }catch(Exception e){
             System.out.println(e);
         }
