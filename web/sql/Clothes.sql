@@ -178,3 +178,21 @@ WHERE sc.userId = 1;
 INSERT INTO [dbo].[Shopping_cart]([userId])
 VALUES
 ('6')
+
+CREATE TABLE [dbo].[Information](
+	[id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+	[content] [nvarchar](250) NOT NULL
+)
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'tel', N'(+84)0342740625')
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'address', N'FPT University Da Nang')
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'mail', N'FUDA@fpt.edu.vn')
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'Monday', N'8 - 22')
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'Tuesday', N'8 - 22')
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'Wednesday', N'8 - 22')
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'Thursday', N'8 - 22')
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'Friday', N'8 - 22')
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'Saturday', N'Closed')
+INSERT [dbo].[Information] ([name], [content]) VALUES (N'Sunday', N'Closed')
+
+select * from Information
