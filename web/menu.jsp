@@ -86,7 +86,7 @@
                                         </c:forEach>								
                                 </ul>
                             </li>																
-                            <li><a href="contact.jsp">Contact Us</a></li>
+                            <li><a href="InfoController">Contact Us</a></li>
                             <li><a href="./products.jsp">Top Seller</a></li>
                         </ul>
                     </nav>
