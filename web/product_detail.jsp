@@ -102,8 +102,8 @@
                                 <h4><strong>Price: $${selectedProduct.getPrice()}</strong></h4>
                             </div>
                             <div class="span5">
-                                <form class="form-inline">
-                                    <select name="size">
+                                <form action="POST" class="form-inline">
+                                    <select name= "size">
                                         <option value="S">Small</option>
                                         <option value="M">Medium</option>
                                         <option value="L">Large</option>
