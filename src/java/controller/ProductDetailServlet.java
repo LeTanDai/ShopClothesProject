@@ -56,7 +56,7 @@ public class ProductDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         // Get the product ID from the request parameter
-        String productId = request.getParameter("id");
+        String productId = request.getParameter("productId");
         
         // Convert the product ID to an integer
         int id;
@@ -70,7 +70,7 @@ public class ProductDetailServlet extends HttpServlet {
         
         // Retrieve the product from the database based on the ID
         ProductDAO productDAO = new ProductDAO();
-        Product selectedProduct = productDAO.getProductById(id);
+        Product selectedProduct = productDAO.getProductByProductId(id);
         
         if (selectedProduct == null) {
             // Handle the case where the product is not found

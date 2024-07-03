@@ -128,7 +128,7 @@
                                             <tbody>
                                                 <tr class="">
                                                     <th>Size</th>
-                                                    <td>Large, Medium, Small, X-Large</td>
+                                                    <td>Large, Medium, Small</td>
                                                 </tr>		
                                                 <tr class="alt">
                                                     <th>Colour</th>
