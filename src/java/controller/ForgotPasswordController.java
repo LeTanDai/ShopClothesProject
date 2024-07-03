@@ -84,7 +84,7 @@ public class ForgotPasswordController extends HttpServlet {
             if (password.equals(repeatPassword)) {
                 user.setPassword(password);
                 loginDAO.updatePassword(user);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("HomeController");
             } else {
                 request.setAttribute("mess", "Passwords do not match.");
                 request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
