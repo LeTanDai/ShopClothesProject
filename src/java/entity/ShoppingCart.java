@@ -11,15 +11,13 @@ package entity;
 public class ShoppingCart {
 
     private int id;
-    private int orderid;
     private int userid;
 
     public ShoppingCart() {
     }
 
-    public ShoppingCart(int id, int orderid, int userid) {
+    public ShoppingCart(int id, int userid) {
         this.id = id;
-        this.orderid = orderid;
         this.userid = userid;
     }
 
@@ -29,14 +27,6 @@ public class ShoppingCart {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getOrderid() {
-        return orderid;
-    }
-
-    public void setOrderid(int orderid) {
-        this.orderid = orderid;
     }
 
     public int getUserid() {
@@ -49,11 +39,8 @@ public class ShoppingCart {
 
     @Override
     public String toString() {
-        return "ShoppingCart{" + "id=" + id + ", orderid=" + orderid + ", userid=" + userid + '}';
+        return "ShoppingCart{" + "id=" + id + ", userid=" + userid + '}';
     }
 
     
-    
-    
-
 }
