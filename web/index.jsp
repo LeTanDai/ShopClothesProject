@@ -73,7 +73,7 @@
                                                     <span class="sale_tag"></span>
                                                     <a href="product-detail?productId=${product.id}"><img src="${product.image}" alt="" style="width: 70%"/></a>
                                                     <a href="product-detail?productId=${product.id}" class="title">${product.name}</a><br/>
-                                                    <a href="product-detail?productId=${product.id}" class="category">Commodo consequat</a>
+                                                    <a href="product-detail?productId=${product.id}" class="category">${product.category.cname}</a>
                                                     <p class="price">${product.price}</p>
                                                 </div>
                                             </li>  
