@@ -38,6 +38,10 @@ public class Product {
         this.quantity = quantity;
         this.category = category;
     }
+
+    public Product(int productId) {
+        this.id = productId;
+    }
     public Category getCategory() {
         return category;
     }

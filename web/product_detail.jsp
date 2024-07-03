@@ -91,15 +91,15 @@
                     <div class="span9">
                         <div class="row">
                             <div class="span4">
-                                <a href="themes/images/ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="themes/images/ladies/1.jpg"></a>												
+                                <a href=${selectedProduct.getImage()} class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src=${selectedProduct.getImage()}></a>												
 
                             </div>
                             <div class="span5">
                                 <address>
-                                    <strong>Category:</strong> <span>Apple</span><br>
-                                    <strong>Product Name:</strong> <span>Product 14</span><br>
+                                    <strong>Category:</strong> <span>${selectedProduct.getCategory().getCname()}</span><br>
+                                    <strong>Product Name:</strong> <span>${selectedProduct.getName()}</span><br>
                                 </address>									
-                                <h4><strong>Price: $587.50</strong></h4>
+                                <h4><strong>Price: $${selectedProduct.getPrice()}</strong></h4>
                             </div>
                             <div class="span5">
                                 <form class="form-inline">
@@ -122,7 +122,7 @@
                                     <li class=""><a href="#profile">Additional Information</a></li>
                                 </ul>							 
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="home">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem</div>
+                                    <div class="tab-pane active" id="home">${selectedProduct.getDescription()}</div>
                                     <div class="tab-pane" id="profile">
                                         <table class="table table-striped shop_attributes">	
                                             <tbody>
