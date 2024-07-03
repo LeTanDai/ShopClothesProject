@@ -16,6 +16,8 @@
         <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
         <link href="themes/css/bootstrappage.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
         <!-- global styles -->
         <link href="themes/css/flexslider.css" rel="stylesheet"/>
@@ -31,10 +33,12 @@
         <div id="top-bar" class="container">
             <div class="row">
                 <div class="span4">
-                    <form method="POST" class="search_form">
-                        <input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
+                    <form method="POST" action="search" class="search_form" style="height: 25px">
+                        <input type="text" name="txt" value="${txtS}" placeholder="Search" style="margin: 0">
+                        <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
+
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
@@ -72,14 +76,14 @@
         <div id="wrapper" class="container">
             <section class="navbar main-menu">
                 <div class="navbar-inner main-menu">				
-                    <a href="index.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
+                    <a href="HomeController" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
                     <nav id="menu" class="pull-right">
                         <ul>
                             <li><a href="./products.jsp">Products</a>					
                                 <ul>
                                     <c:forEach items="${listC}" var="category">
                                         <li><a href="./products.jsp">${category.cname}</a></li>								
-                                    </c:forEach>								
+                                        </c:forEach>								
                                 </ul>
                             </li>																
                             <li><a href="contact.jsp">Contact Us</a></li>
