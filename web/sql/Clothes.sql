@@ -49,7 +49,6 @@ CREATE TABLE Orders(
 
 CREATE TABLE Shopping_cart(
 	shoppingcartId int identity(1,1) PRIMARY KEY NOT NULL,
-	orderId int FOREIGN KEY REFERENCES Orders(orderId),
 	userId int FOREIGN KEY REFERENCES Users(userId)
 )
 
@@ -116,13 +115,13 @@ VALUES
 ('2024-06-18', '2000000', 'Processing', N'321 Dummy Blvd, Da Nang', '4'),
 ('2024-06-19', '1800000', 'Cancelled', N'654 Placeholder Ln, Hanoi', '5');
 
-INSERT INTO [dbo].[Shopping_cart]([orderId], [userId])
+INSERT INTO [dbo].[Shopping_cart]([userId])
 VALUES
-('1', '1'),
-('2', '2'),
-('3', '3'),
-('4', '4'),
-('5', '5');
+('1'),
+('2'),
+('3'),
+('4'),
+('5');
 
 INSERT INTO [dbo].[Payment]([payment_date], [method], [shoppingcartId], [userId])
 VALUES
@@ -175,3 +174,7 @@ FROM Shopping_cart sc
 JOIN Shopping_cart_item sci ON sc.shoppingcartId = sci.shoppingcartId
 JOIN Product p on sci.productId = p.productId
 WHERE sc.userId = 1;
+
+INSERT INTO [dbo].[Shopping_cart]([userId])
+VALUES
+('6')

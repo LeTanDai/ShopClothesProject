@@ -5,8 +5,6 @@
 package dao;
 
 import context.DBContext;
-import entity.Category;
-import entity.Product;
 import entity.ShoppingCart;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +30,6 @@ public class ShoppingCartDAO extends DBContext{
             while (rs.next()) {
                 ShoppingCart s = new ShoppingCart(
                         rs.getInt("shoppingcartId")
-                        , rs.getInt("orderId")
                         , rs.getInt("userId"));
                 spCList.add(s);
             }
@@ -55,12 +52,11 @@ public class ShoppingCartDAO extends DBContext{
         return null;
     }
     
-    public void addShoppingCart(int orderId, int userId) {
-        String query = "INSERT INTO [dbo].[Shopping_cart]([orderId], [userId]) VALUES (?, ?)";
+    public void addShoppingCart(int userId) {
+        String query = "INSERT INTO [dbo].[Shopping_cart]([userId]) VALUES (?)";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, orderId);
-            ps.setInt(2, userId);
+            ps.setInt(1, userId);
             
             ps.executeUpdate();
             
