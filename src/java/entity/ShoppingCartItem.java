@@ -12,13 +12,13 @@ public class ShoppingCartItem {
     private int id;
     private int quantity;
     private String size;
-    private Product productid;
+    private int productid;
     private int shopping_cartid;
 
     public ShoppingCartItem() {
     }
 
-    public ShoppingCartItem(int id, int quantity, String size, Product productid, int shopping_cartid) {
+    public ShoppingCartItem(int id, int quantity, String size, int productid, int shopping_cartid) {
         this.id = id;
         this.quantity = quantity;
         this.size = size;
@@ -50,11 +50,11 @@ public class ShoppingCartItem {
         this.size = size;
     }
 
-    public Product getProductid() {
+    public int getProductid() {
         return productid;
     }
 
-    public void setProductid(Product productid) {
+    public void setProductid(int productid) {
         this.productid = productid;
     }
 
@@ -65,6 +65,8 @@ public class ShoppingCartItem {
     public void setShopping_cartid(int shopping_cartid) {
         this.shopping_cartid = shopping_cartid;
     }
+
+    
     
     
 }

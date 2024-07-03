@@ -12,12 +12,12 @@ public class ShoppingCart {
 
     private int id;
     private int orderid;
-    private User userid;
+    private int userid;
 
     public ShoppingCart() {
     }
 
-    public ShoppingCart(int id, int orderid, User userid) {
+    public ShoppingCart(int id, int orderid, int userid) {
         this.id = id;
         this.orderid = orderid;
         this.userid = userid;
@@ -39,18 +39,20 @@ public class ShoppingCart {
         this.orderid = orderid;
     }
 
-    public User getUserid() {
+    public int getUserid() {
         return userid;
     }
 
-    public void setUserid(User userid) {
+    public void setUserid(int userid) {
         this.userid = userid;
     }
 
     @Override
     public String toString() {
-        return "ShoppingCart[" + "Id =" + id + ", Orderid =" + orderid + ", Userid =" + userid + ']';
+        return "ShoppingCart{" + "id=" + id + ", orderid=" + orderid + ", userid=" + userid + '}';
     }
+
+    
     
     
 
