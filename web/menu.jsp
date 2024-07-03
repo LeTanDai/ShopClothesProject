@@ -75,22 +75,13 @@
                     <a href="index.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
                     <nav id="menu" class="pull-right">
                         <ul>
-                            <li><a href="./products.jsp">Woman</a>					
+                            <li><a href="./products.jsp">Products</a>					
                                 <ul>
-                                    <li><a href="./products.jsp">Lacinia nibh</a></li>									
-                                    <li><a href="./products.jsp">Eget molestie</a></li>
-                                    <li><a href="./products.jsp">Varius purus</a></li>									
+                                    <c:forEach items="${listC}" var="category">
+                                        <li><a href="./products.jsp">${category.cname}</a></li>								
+                                    </c:forEach>								
                                 </ul>
-                            </li>															
-                            <li><a href="./products.jsp">Man</a></li>			
-                            <li><a href="./products.jsp">Sport</a>
-                                <ul>									
-                                    <li><a href="./products.jsp">Gifts and Tech</a></li>
-                                    <li><a href="./products.jsp">Ties and Hats</a></li>
-                                    <li><a href="./products.jsp">Cold Weather</a></li>
-                                </ul>
-                            </li>							
-                            <li><a href="./products.jsp">Hangbag</a></li>
+                            </li>																
                             <li><a href="contact.jsp">Contact Us</a></li>
                             <li><a href="./products.jsp">Top Seller</a></li>
                         </ul>
