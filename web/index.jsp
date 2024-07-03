@@ -68,16 +68,15 @@
                                 <div id="product-list">
                                     <ul   class="row thumbnails">
                                     <c:forEach items="${listP}" var="product">
-                                       
                                             <li class="span3">
                                                 <div style="height: 350px; width: 100%" class="product-box">
                                                     <span class="sale_tag"></span>
-                                                    <img src="${product.image}" alt="" style="width: 70%"/>
+                                                    <a href="product_detail.jsp"><img src="${product.image}" alt="" style="width: 70%"/></a>
                                                     <a href="#" class="title">${product.name}</a><br/>
-                                                    <a href="products.jsp" class="category">Commodo consequat</a>
+                                                    <a href="product_detail.jsp" class="category">${product.category.cname}</a>
                                                     <p class="price">${product.price}</p>
                                                 </div>
-                                            </li>
+                                            </li>  
                                     </c:forEach>
 
                                 </ul>

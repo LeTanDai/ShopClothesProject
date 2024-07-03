@@ -5,6 +5,7 @@
 package dao;
 
 import context.DBContext;
+import entity.Category;
 import entity.Product;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,45 +17,75 @@ import java.sql.SQLException;
  *
  * @author ASUS
  */
-public class ProductDAO extends DBContext{
-    
-    public List<Product>getAllProducts(){
-        List<Product>list = new ArrayList<>();
-        String sql = "Select * from Product";
-        try{
+public class ProductDAO extends DBContext {
+
+    public List<Product> getAllProducts() {
+        List<Product> productList = new ArrayList<>();
+        String sql = "SELECT p.productId, p.prod_name, p.prod_image, p.descriptions, p.price, p.quantity, c.prod_category_id, c.prod_category_name "
+                + "FROM Product p "
+                + "JOIN Product_category c ON p.prod_category_id = c.prod_category_id";
+
+        try (PreparedStatement st = connection.prepareStatement(sql); 
+            ResultSet rs = st.executeQuery()) {
+
+            while (rs.next()) {
+                Category category = new Category(rs.getInt("prod_category_id"), rs.getString("prod_category_name"));
+                Product product = new Product(
+                        rs.getInt("productId"),
+                        rs.getString("prod_name"),
+                        rs.getString("prod_image"),
+                        rs.getString("descriptions"),
+                        rs.getDouble("price"),
+                        rs.getInt("quantity"),
+                        category
+                );
+                productList.add(product);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return productList;
+    }
+
+    public List<Category> getAllCategory() {
+        List<Category> list = new ArrayList<>();
+        String sql = "Select * from Product_category";
+        try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
-            while(rs.next()){
-                Product product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getInt(6));
-                list.add(product);
+            while (rs.next()) {
+                Category c = new Category(rs.getInt(1), rs.getString(2));
+                list.add(c);
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return list;
     }
-    
-    public Product getProductById(int id){
+
+    public Product getProductById(int id) {
         ProductDAO productDAO = new ProductDAO();
-        try{
+        try {
             List<Product> list = productDAO.getAllProducts();
-            for(Product p: list){
-                if(p.getId()==id){
+            for (Product p : list) {
+                if (p.getId() == id) {
                     return p;
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
         return null;
     }
-    
+
     public static void main(String[] args) {
         ProductDAO productDAO = new ProductDAO();
-        try{
-            Product p = productDAO.getProductById(1);
+        try {
+            List<Category> c = productDAO.getAllCategory();
+            List<Product> p = productDAO.getAllProducts();
             System.out.println(p);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
