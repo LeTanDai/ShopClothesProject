@@ -72,8 +72,8 @@
                                                 <div style="height: 350px; width: 100%" class="product-box">
                                                     <span class="sale_tag"></span>
                                                     <a href="product_detail.jsp"><img src="${product.image}" alt="" style="width: 70%"/></a>
-                                                    <a href="#" class="title">${product.name}</a><br/>
-                                                    <a href="product_detail.jsp" class="category">${product.category.cname}</a>
+                                                    <a href="product-detail?id=${product.id}" class="title">${product.name}</a><br/>
+                                                    <a href="product_detail.jsp" class="category">Commodo consequat</a>
                                                     <p class="price">${product.price}</p>
                                                 </div>
                                             </li>  
