@@ -64,7 +64,7 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
-    public Product getProductById(int id) {
+    public Product getProductByProductId(int id) {
         ProductDAO productDAO = new ProductDAO();
         try {
             List<Product> list = productDAO.getAllProducts();
@@ -88,5 +88,9 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public Product getProductById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

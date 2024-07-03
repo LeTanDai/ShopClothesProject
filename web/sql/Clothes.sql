@@ -1,4 +1,4 @@
-﻿create database shopping_data
+create database shopping_data
 
 use shopping_data
 
@@ -6,10 +6,12 @@ drop table Shopping_cart_item
 drop table Payment
 drop table Shopping_cart
 drop table Product_category
+drop table Order_Product
+drop table Orders
 drop table Users
 drop table Product
 
-create table Users(
+CREATE TABLE Users(
 	userId int identity(1,1) PRIMARY KEY NOT NULL,
 	userName varchar(255) not null,
 	name_user nvarchar(255) null,
@@ -21,12 +23,12 @@ create table Users(
 	isAdmin int null
 )
 
-create table Product_category(
+CREATE TABLE Product_category(
 	prod_category_id int identity(1,1) PRIMARY KEY NOT NULL,
 	prod_category_name nvarchar(255) null
 )
 
-create table Product(
+CREATE TABLE Product(
 	productId int identity(1,1) PRIMARY KEY NOT NULL,
 	prod_name nvarchar(255) null,
 	prod_image nvarchar(max) null,
@@ -36,7 +38,7 @@ create table Product(
 	prod_category_id int FOREIGN KEY REFERENCES Product_category(prod_category_id)
 )
 
-create table Orders(
+CREATE TABLE Orders(
 	orderId int identity(1,1) PRIMARY KEY NOT NULL,
 	order_date Date null,
 	total_price money null,
@@ -45,15 +47,13 @@ create table Orders(
 	userId int FOREIGN KEY REFERENCES Users(userId)
 )
 
-create table Shopping_cart(
+CREATE TABLE Shopping_cart(
 	shoppingcartId int identity(1,1) PRIMARY KEY NOT NULL,
-	transaction_id_user int null,
-	transaction_id_merchant int null,
 	orderId int FOREIGN KEY REFERENCES Orders(orderId),
 	userId int FOREIGN KEY REFERENCES Users(userId)
 )
 
-create table Payment(
+CREATE TABLE Payment(
 	paymentId int identity(1,1) PRIMARY KEY NOT NULL,
 	payment_date Date null,
 	method nvarchar(255) null,
@@ -61,13 +61,21 @@ create table Payment(
 	userId int FOREIGN KEY REFERENCES Users(userId)
 )
 
-create table Shopping_cart_item(
+CREATE TABLE Shopping_cart_item(
 	shoppingcart_itemId int identity(1,1) PRIMARY KEY NOT NULL,
 	shoppingcartitem_quantity int null,
 	size varchar(20) null,
 	productId int FOREIGN KEY REFERENCES Product(productId),
 	shoppingcartId int FOREIGN KEY REFERENCES Shopping_cart(shoppingcartId)
 )
+
+CREATE TABLE Order_Product (
+    orderId INT,
+    productId INT,
+    PRIMARY KEY (orderId, productId),
+    FOREIGN KEY (orderId) REFERENCES Orders(orderId),
+    FOREIGN KEY (productId) REFERENCES Product(productId)
+);
 
 INSERT INTO [dbo].[Users]([userName],[name_user],[pass],[userAddress],[phone],[email],[isSell],[isAdmin])
 VALUES('letandai',N'Lê Tấn Đại','letandai1304',N'Quảng Nam','0342750625','letandai1304@gmail.com','0','1'), 
@@ -108,13 +116,13 @@ VALUES
 ('2024-06-18', '2000000', 'Processing', N'321 Dummy Blvd, Da Nang', '4'),
 ('2024-06-19', '1800000', 'Cancelled', N'654 Placeholder Ln, Hanoi', '5');
 
-INSERT INTO [dbo].[Shopping_cart]([transaction_id_user], [transaction_id_merchant], [orderId], [userId])
+INSERT INTO [dbo].[Shopping_cart]([orderId], [userId])
 VALUES
-('101', '201', '1', '1'),
-('102', '202', '2', '2'),
-('103', '203', '3', '3'),
-('104', '204', '4', '4'),
-('105', '205', '5', '5');
+('1', '1'),
+('2', '2'),
+('3', '3'),
+('4', '4'),
+('5', '5');
 
 INSERT INTO [dbo].[Payment]([payment_date], [method], [shoppingcartId], [userId])
 VALUES
@@ -132,6 +140,14 @@ VALUES
 ('4', 'S', '4', '4'),
 ('2', 'L', '5', '5');
 
+INSERT INTO [dbo].[Order_Product]([orderId], [productId])
+VALUES 
+('1', '1'),
+('2', '3'),
+('3', '2'),
+('4', '4'),
+('5', '1');
+
 select * from [dbo].[Users]
 select * from [dbo].[Shopping_cart_item]
 select * from [dbo].[Shopping_cart]
@@ -140,6 +156,7 @@ select * from [dbo].[Product_category]
 select * from [dbo].[Product]
 select * from [dbo].[Payment]
 select * from [dbo].[Orders]
+select * from [dbo].[Order_Product]
 
 UPDATE Product
 SET prod_name = 'Hand Painted Donald Duck Regular Men'
@@ -152,3 +169,9 @@ WHERE productId = 8;
 UPDATE Product
 SET prod_name = 'Men 3C 2-Layer Sports Windbreaker'
 WHERE productId = 12;
+
+SELECT *
+FROM Shopping_cart sc
+JOIN Shopping_cart_item sci ON sc.shoppingcartId = sci.shoppingcartId
+JOIN Product p on sci.productId = p.productId
+WHERE sc.userId = 1;
