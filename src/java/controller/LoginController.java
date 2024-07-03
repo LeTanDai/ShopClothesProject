@@ -100,7 +100,7 @@ public class LoginController extends HttpServlet {
             response.addCookie(cuser);
             response.addCookie(cpass);
             response.addCookie(crem);
-            response.sendRedirect("HomeController");
+            response.sendRedirect("index.jsp");
         }
     }
 

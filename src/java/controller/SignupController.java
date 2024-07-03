@@ -42,7 +42,7 @@ public class SignupController extends HttpServlet {
             User user = loginDAO.checkAccountExist(username);
             if(user == null){
                 loginDAO.signup(username, password,email);
-                response.sendRedirect("HomeController");
+                response.sendRedirect("index.jsp");
             }else{
                 response.sendRedirect("login.jsp");
             }
