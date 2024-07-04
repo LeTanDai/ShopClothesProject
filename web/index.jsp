@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Bootstrap E-commerce Templates</title>
+        <title>Shopper</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -92,7 +92,7 @@
                         <div class="responsive">
                             <img src="themes/images/feature_img_2.png" alt="" />
                             <h4>MODERN <strong>DESIGN</strong></h4>
-                            <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+                            <p>Discover our latest collection of stylish and trendy outfits, perfect for any occasion.</p>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                         <div class="customize">
                             <img src="themes/images/feature_img_1.png" alt="" />
                             <h4>FREE <strong>SHIPPING</strong></h4>
-                            <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+                            <p>Enjoy free shipping on all orders, featuring our latest collection of stylish and trendy outfits.</p>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         <div class="support">
                             <img src="themes/images/feature_img_3.png" alt="" />
                             <h4>24/7 LIVE <strong>SUPPORT</strong></h4>
-                            <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+                            <p>Experience our stylish and trendy outfits, with 24/7 live support for all your shopping needs.</p>
                         </div>
                     </div>
                 </div>

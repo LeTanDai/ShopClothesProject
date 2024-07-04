@@ -17,4 +17,7 @@
         <servlet-name>ProductDetailServlet</servlet-name>
         <url-pattern>/product-detail</url-pattern>
     </servlet-mapping>
+     <welcome-file-list>
+    <welcome-file>HomeController</welcome-file>
+    </welcome-file-list>
 </web-app>

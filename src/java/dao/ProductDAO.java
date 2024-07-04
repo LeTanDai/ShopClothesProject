@@ -25,8 +25,7 @@ public class ProductDAO extends DBContext {
                 + "FROM Product p "
                 + "JOIN Product_category c ON p.prod_category_id = c.prod_category_id";
 
-        try (PreparedStatement st = connection.prepareStatement(sql); 
-            ResultSet rs = st.executeQuery()) {
+        try (PreparedStatement st = connection.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
 
             while (rs.next()) {
                 Category category = new Category(rs.getInt("prod_category_id"), rs.getString("prod_category_name"));
@@ -78,20 +77,26 @@ public class ProductDAO extends DBContext {
         }
         return null;
     }
-    public List<Product>searchByName(String txtSearch){
-        List<Product>list = new ArrayList<>();
-        String sql = "Select * from Product\n" 
-                + "where [prod_name] like ?";
-        try{
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, "%" + txtSearch + "%");
-            ResultSet rs = st.executeQuery();
-            while(rs.next()){
-                Product product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getInt(6));
+
+    public List<Product> searchByName(String txtSearch) {
+        String query = "SELECT p.productId, p.prod_name, p.price, p.prod_image, p.descriptions, p.quantity, c.prod_category_id, c.prod_category_name "
+                + "FROM Product p "
+                + "JOIN Product_category c ON p.prod_category_id = c.prod_category_id "
+                + "WHERE p.prod_name LIKE ?";
+        List<Product> list = new ArrayList<>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, "%" + txtSearch + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Category category = new Category(rs.getInt("prod_category_id"), rs.getString("prod_category_name"));
+                Product product = new Product(rs.getInt("productId"), rs.getString("prod_name"),
+                        rs.getString("prod_image"), rs.getString("descriptions"),
+                        rs.getDouble("price"), rs.getInt("quantity"), category);
                 list.add(product);
             }
-        }catch(SQLException e){
-            System.out.println(e);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return list;
     }
