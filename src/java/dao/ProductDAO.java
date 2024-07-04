@@ -112,7 +112,20 @@ public class ProductDAO extends DBContext {
         }
     }
 
-    public Product getProductById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        public Product getProductById(int id) {
+        String sql = "select * from Product where Product.productId = ?";
+        Product p = new Product();
+        try {
+            PreparedStatement state = connection.prepareStatement(sql);
+            state.setInt(1, id);
+            ResultSet rs = state.executeQuery();
+            while(rs.next()) {
+                p = new Product(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getString(4), rs.getDouble(5), rs.getInt(6));
+                return p;
+            }
+        } catch ( SQLException e ) {
+            e.printStackTrace();
+        }
+        return p;
+       }
 }
