@@ -42,7 +42,7 @@ public class ShoppingCartItemDAO extends DBContext {
                         , rs.getInt("shoppingcartitem_quantity")
                         , rs.getString("size")
                         , rs.getInt("productId")
-                        , rs.getInt(spC.getId()));
+                        , spC.getId());
                 listItem.add(sCItem);
             }
         } catch (SQLException e) {
