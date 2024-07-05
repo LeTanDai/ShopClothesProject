@@ -67,12 +67,39 @@ public class OrderHistoryServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("account");
+        ArrayList<Product> listP = new ArrayList<>();
+        Map<Order, ArrayList<Product>> map = new HashMap<>();
+        Order orderr = new Order();
+        OrderDAO orderdao = new OrderDAO();
+        ArrayList<Integer> orderid = orderdao.getOrderidByUserid(user.getId());
+        for (int order : orderid) {
+            listP = orderdao.getallProductbyOrderid(order);
+            orderr = orderdao.getOrderbyOrderid(order);
+            map.put(orderr, listP);
+        }
+        request.setAttribute("mapOrder", map);
+        request.getRequestDispatcher("orderHistory.jsp").forward(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("account");
         OrderDAO orderdao = new OrderDAO();
         // Lấy ngày hiện tại
         LocalDate currentDate = LocalDate.now();
         // Chuyển đổi thành java.sql.Date
         java.sql.Date sqlDate = java.sql.Date.valueOf(currentDate);
-        if (orderdao.addOrder(sqlDate, user.getId(), (double) session.getAttribute("total"), "shipping", user.getAddress())) {
+        if (orderdao.addOrder(sqlDate, user.getId(), (double) session.getAttribute("total"), "Processing", user.getAddress())) {
             ArrayList<Integer> orderid = orderdao.getOrderidByUserid(user.getId());
             List<Product> neworder = (List<Product>) session.getAttribute("prepareOder");
             ArrayList<Integer> productid = new ArrayList<>();
@@ -96,20 +123,6 @@ public class OrderHistoryServlet extends HttpServlet {
         } else {
             request.getRequestDispatcher("BillingDetail.jsp").forward(request, response);
         }
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

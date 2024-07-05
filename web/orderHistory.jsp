@@ -96,10 +96,7 @@
                                 <td>${entry.key.date}</td>
                                 <td>${entry.key.status}</td>
                                 <td>
-                                    <c:forEach var="product" items="${entry.value}">
-                                        ${product.price} </br>
-                                       
-                                    </c:forEach>
+                                    ${entry.key.total}
                                 </td>
                                 <td>
                                     <c:forEach var="product" items="${entry.value}">
@@ -130,7 +127,7 @@
                         <h4>My Account</h4>
                         <ul class="nav">
                             <li><a href="#">My Account</a></li>
-                            <li><a href="#">Order History</a></li>
+                            <li><a href="OrderHistoryServlet">Order History</a></li>
                             <li><a href="#">Wish List</a></li>
                             <li><a href="#">Newsletter</a></li>
                         </ul>
