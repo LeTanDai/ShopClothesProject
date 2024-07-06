@@ -79,6 +79,49 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- col-12 -->
+                        <div class="col-md-12">
+                            <div class="tile">
+                                <h3 class="tile-title">Đơn hàng gần đây</h3>
+                                <div>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Total</th>
+                                                <th>Product Image</th>
+                                                <th>Address</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach var="entry" items="${MapOrder}">
+                                                <tr>
+                                                    <td>${entry.key.id}</td>
+                                                    <td>${entry.key.date}</td>
+                                                    <td>${entry.key.status}</td>
+                                                    <td>
+                                                        ${entry.key.total}
+                                                    </td>
+                                                    <td>
+                                                        <c:forEach var="product" items="${entry.value}">
+                                                            <img src="${product.image}" width="100px" height="100px" alt="Product Image" class="img-fluid img-thumbnail"/></br>
+
+                                                        </c:forEach>
+                                                    </td>
+                                                    <td>${entry.key.address_shipping}</td>
+                                                </tr>
+                                            </c:forEach>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- / div trống-->
+                            </div>
+                        </div>
+                        <!-- / col-12 -->
                     </div>
                 </div>
             </div>

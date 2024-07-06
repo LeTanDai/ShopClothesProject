@@ -76,20 +76,20 @@ public class AdminServlet extends HttpServlet {
             int totalProducts = pDao.countAllProduct();
             int totalUsers = uDao.countCustomer();
             int totalOrders = oDao.countAllOrder();
-//            ArrayList<Product> listP = new ArrayList<>();
-//            Map<Order, ArrayList<Product>> map = new HashMap<>();
-//            Order orderr = new Order();
-//            ArrayList<Integer> orderIds = oDao.getAllOrderIds();
-//            for (int order : orderIds) {
-//                listP = oDao.getallProductbyOrderid(order);
-//                orderr = oDao.getOrderbyOrderid(order);
-//                map.put(orderr, listP);
-//            }
+            ArrayList<Product> listP = new ArrayList<>();
+            Map<Order, ArrayList<Product>> map = new HashMap<>();
+            Order orderr = new Order();
+            ArrayList<Integer> orderIds = oDao.getAllOrderIds();
+            for (int order : orderIds) {
+                listP = oDao.getallProductbyOrderid(order);
+                orderr = oDao.getOrderbyOrderid(order);
+                map.put(orderr, listP);
+            }
 
             request.setAttribute("TOTALPRODUCTS", totalProducts);
             request.setAttribute("TOTALUSERS", totalUsers);
             request.setAttribute("TOTALORDERS", totalOrders);
-//            request.setAttribute("MapOrder", map);
+            request.setAttribute("MapOrder", map);
             request.setAttribute("CURRENTSERVLET", "Dashboard");
 
         } catch (Exception ex) {
