@@ -113,4 +113,46 @@ public class UserDAO extends DBContext {
             System.out.println(e);
         }
     }
+     
+     public int countCustomer(){
+         int count = 0;
+        String sql = "SELECT * FROM Users WHERE isSell = ? AND isAdmin = ?";
+        try {
+            PreparedStatement state = connection.prepareStatement(sql);
+            state.setInt(1, 1);
+            state.setInt(2, 0);
+            ResultSet rs = state.executeQuery();
+            while (rs.next()) {
+                count++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+     }
+     
+     public int countAdmin(){
+         int count = 0;
+        String sql = "SELECT * FROM Users WHERE isSell = ? AND isAdmin = ?";
+        try {
+            PreparedStatement state = connection.prepareStatement(sql);
+            state.setInt(1, 0);
+            state.setInt(2, 1);
+            ResultSet rs = state.executeQuery();
+            while (rs.next()) {
+                count++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+     }
+     
+     public static void main(String[] args) {
+        UserDAO u = new UserDAO();
+        int countC = u.countCustomer();
+        int countA = u.countAdmin();
+         System.out.println("Customer : " + countC + 
+                 "\n" + "Admin : " + countA);
+    }
 }

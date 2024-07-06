@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Main CSS-->
-          <link rel="stylesheet" type="text/css" href="../css/main.css">
+          <link rel="stylesheet" type="text/css" href="admin/css/main.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
         <!-- or -->
         <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -74,51 +74,11 @@
                             <div class="widget-small danger coloured-icon"><i class='icon bx bxs-error-alt fa-3x'></i>
                                 <div class="info">
                                     <h4>Sắp hết hàng</h4>
-                                    <p><b>${requestScope.PRODUCTSLOW} sản phẩm</b></p>
+                                    <p><b>0 sản phẩm</b></p>
                                     <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- col-12 -->
-                        <div class="col-md-12">
-                            <div class="tile">
-                                <h3 class="tile-title">Đơn hàng gần đây</h3>
-                                <div>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>ID đơn hàng</th>
-                                                <th>Khách hàng</th>
-                                                <th>Số điện thoại</th>
-                                                <th>Địa chỉ</th>
-                                                <th>Ngày mua</th>
-                                                <th>Tổng tiền</th>
-                                                <th>Thanh Toán</th>
-                                                <th>Chức năng</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach items="${LAST_RECENT_ORDERS}" var="b">
-                                            <tr>
-                                                <td>${b.orderID}</td>
-                                                <td>${b.user.userName}</td>
-                                                <td>(+84) ${b.user.phone}</td>
-                                                <td>${b.user.address}</td>
-                                                <td>${b.orderDate}</td>
-                                                <td>${b.totalPrice}</td>
-                                                <td><span class="badge bg-success">${b.paymentMethod.paymentMethod}</span></td>                              
-                                                <td><a style=" color: rgb(245 157 57);background-color: rgb(251 226 197); padding: 5px;border-radius: 5px;" href="ManageOrderServlet?action=showdetail&bill_id=${b.getOrderID()}"><i class="fa"></i>Chi tiết đơn hàng</a></td>
-                                            </tr>
-                                        </c:forEach>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- / div trống-->
-                            </div>
-                        </div>
-                        <!-- / col-12 -->
                     </div>
                 </div>
             </div>

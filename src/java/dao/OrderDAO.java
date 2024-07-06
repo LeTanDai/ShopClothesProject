@@ -110,4 +110,40 @@ public class OrderDAO extends DBContext {
         }
         return order;
     }
+    
+    public int countAllOrder(){
+        int count = 0;
+        String sql = "select * from Orders";
+        try {
+            PreparedStatement state = connection.prepareStatement(sql);
+            ResultSet rs = state.executeQuery();
+            while (rs.next()) {
+                count++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+    
+    public ArrayList<Integer> getAllOrderIds() {
+    ArrayList<Integer> orderIds = new ArrayList<>();
+    String sql = "SELECT * FROM Orders";
+    try {
+        PreparedStatement state = connection.prepareStatement(sql);
+        ResultSet rs = state.executeQuery();
+        while (rs.next()) {
+            orderIds.add(rs.getInt(1));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return orderIds;
+    }
+    
+    public static void main(String[] args) {
+        OrderDAO o = new OrderDAO();
+        int count = o.countAllOrder();
+        System.out.println(count);
+    }
 }

@@ -106,7 +106,9 @@ public class ProductDAO extends DBContext {
         try {
             List<Category> c = productDAO.getAllCategory();
             List<Product> p = productDAO.getAllProducts();
+            int count  = productDAO.countAllProduct();
             System.out.println(p);
+            System.out.println("Count: "+ count);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -128,4 +130,19 @@ public class ProductDAO extends DBContext {
         }
         return p;
        }
+        
+        public int countAllProduct(){
+        int count = 0;
+        String sql = "select * from Product";
+        try {
+            PreparedStatement state = connection.prepareStatement(sql);
+            ResultSet rs = state.executeQuery();
+            while (rs.next()) {
+                count++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 }
