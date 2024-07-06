@@ -196,3 +196,8 @@ INSERT [dbo].[Information] ([name], [content]) VALUES (N'Saturday', N'Closed')
 INSERT [dbo].[Information] ([name], [content]) VALUES (N'Sunday', N'Closed')
 
 select * from Information
+
+delete from Shopping_cart_item where Shopping_cart_item.shoppingcart_itemId = 4
+
+INSERT INTO [dbo].[Shopping_cart_item] ( [shoppingcartitem_quantity], [size], [productId], [shoppingcartId] ) VALUES 
+	(5,'L',4,4)
