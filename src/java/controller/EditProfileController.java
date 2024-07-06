@@ -37,10 +37,13 @@ public class EditProfileController extends HttpServlet {
         int id = u.getId();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         UserDAO loginDAO = new UserDAO();
-        loginDAO.editProfile(username, password, email, id);
-        request.setAttribute("mess", "Account updated successfully, please log in with new account!");
+        loginDAO.editProfile(username, password, name, address, phone, email, id);
+        request.setAttribute("mess", "Account updated successfully!!!");
         request.getRequestDispatcher("editProfile.jsp").forward(request, response);
     } 
 

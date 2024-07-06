@@ -53,7 +53,7 @@ public class UserDAO extends DBContext {
 
     public void signup(String username, String password,String email) {
         String sql = "INSERT INTO [dbo].[Users]\n"
-                + "     VALUES\n" + "(?,0,?,0,0,?,0,0)";
+                + "     VALUES\n" + "(?,'',?,'','',?,'','')";
         try{
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, username);
@@ -91,17 +91,23 @@ public class UserDAO extends DBContext {
             e.printStackTrace();
         }
     }
-     public void editProfile(String username, String password, String email, int userID) {
+     public void editProfile(String username, String password, String name, String address, String phone, String email, int userID) {
         String sql = "UPDATE  Users set [userName]=?,\r\n"
+                        +"[name_user]=?,\r\n"
         		+ "[pass]=?,\r\n"
+                        +"[userAddress]=?,\r\n"
+                        +"[phone]=?,\r\n"
         		+ "[email]=?\r\n"
         		+ "where [userId] = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, username);
-            st.setString(2, password);
-            st.setString(3, email);
-            st.setInt(4, userID);
+            st.setString(2, name);
+            st.setString(3, password);
+            st.setString(4,address);
+            st.setString(5,phone);
+            st.setString(6,email);
+            st.setInt(7,userID);
             st.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);

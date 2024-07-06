@@ -42,12 +42,16 @@
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
-                            <li><a href="#">My Account</a></li>
+                             <c:if test="${sessionScope.account != null}">
+                                <li>
+                                    <a href="editProfile.jsp">My Account</a>
+                                </li>
+                            </c:if>
                             <li><a href="cart.jsp">Your Cart</a></li>
                             <li><a href="checkout.jsp">Checkout</a></li>
                                 <c:if test="${sessionScope.account != null}">
                                 <li>
-                                    <a href="#">Hello ${sessionScope.account.name}</a>
+                                    <a href="#">Hello ${sessionScope.account.username}</a>
                                 </li>
                                 <li>
                                     <a href="logout">Logout</a>
@@ -63,11 +67,6 @@
                                     <a href="forgotPassword">Forgot password</a>
                                 </li>
                             </c:if>
-                            <c:if test="${sessionScope.account != null}">
-                                <li>
-                                    <a href="editProfile.jsp">Edit Profile</a>
-                                </li>
-                            </c:if>
                         </ul>
                     </div>
                 </div>
@@ -79,6 +78,9 @@
                     <a href="HomeController" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
                     <nav id="menu" class="pull-right">
                         <ul>
+                            <li>
+                                <a href="HomeController">Home</a>
+                            </li>
                             <li><a href="./products.jsp">Products</a>					
                                 <ul>
                                     <c:forEach items="${listC}" var="category">
@@ -87,7 +89,6 @@
                                 </ul>
                             </li>																
                             <li><a href="InfoController">Contact Us</a></li>
-                            <li><a href="./products.jsp">Top Seller</a></li>
                         </ul>
                     </nav>
                 </div>
