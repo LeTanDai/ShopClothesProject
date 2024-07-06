@@ -43,36 +43,36 @@
                 <div class="row">
                     <div class="span12">
                         <h4 class="title"><span class="text"><strong>Your</strong> Cart</span></h4>
-                        <form action="" method="post">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Remove</th>
-                                        <th>Image</th>
-                                        <th>Product Name</th>
-                                        <th>Size</th>
-                                        <th>Quantity</th>
-                                        <th>Unit Price</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Iterate over cart items -->
-                                <c:forEach items="${mapP}" var="item">
-                                    <tr>
-                                        <td><input type="submit" value="Remove"></td>
-                                        <td><img alt="" src="${item.value.image}" width="100px" height="100px"></td>
-                                        <td>${item.value.name}</td>
-                                        <td>${item.key.size}</td>
-                                        <td>${item.key.quantity}</td>
-                                        <td>$${item.value.price}</td>
-                                        <td>$${item.value.price * item.key.quantity}</td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </form>
-                        <a href="checkout.jsp"><p class="buttons center"><input type="submit" value="Checkout" class="btn btn-inverse"></p></a>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Remove</th>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Size</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Iterate over cart items -->
+                            <c:forEach items="${sessionScope.mapP}" var="item">
+                                <tr>
+                            <form action="RemoveController?id=${item.key.id}" method="post">
+                                <td><input type="submit" value="Remove"></td>
+                            </form>
+                            <td><img alt="" src="${item.value.image}" width="100px" height="100px"></td>
+                            <td>${item.value.name}</td>
+                            <td>${item.key.size}</td>
+                            <td>${item.key.quantity}</td>
+                            <td>$${item.value.price}</td>
+                            <td>$${item.value.price * item.key.quantity}</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                    <a href="checkout.jsp"><p class="buttons center"><input type="submit" value="Checkout" class="btn btn-inverse"></p></a>
                 </div>					
             </div>
         </section>	

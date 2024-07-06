@@ -81,12 +81,11 @@ public class ShoppingCartItemDAO extends DBContext {
         }
     }
     
-    public void removeProductFromShoppingCart(int id, int shoppingCartId){
-        String sql = "delete from Shopping_cart_item where Shopping_cart_item.shoppingcart_itemId = ? and Shopping_cart_item.shoppingcartId = ?";
+    public void removeProductFromShoppingCart(int id){
+        String sql = "delete from Shopping_cart_item where Shopping_cart_item.shoppingcart_itemId = ?";
         try{
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1,id);
-            ps.setInt(2, shoppingCartId);
             ps.executeUpdate();
             ps.close();
         }

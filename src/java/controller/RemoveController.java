@@ -25,7 +25,7 @@ import java.util.Map;
  *
  * @author lethe
  */
-public class AddToCartController extends HttpServlet {
+public class RemoveController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +44,10 @@ public class AddToCartController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddToCartController</title>");
+            out.println("<title>Servlet RemoveController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddToCartController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RemoveController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -86,21 +86,19 @@ public class AddToCartController extends HttpServlet {
             return;
         }
 
-        String quantity = request.getParameter("quantity");
-        int Quantity = Integer.parseInt(quantity);
-        String size = request.getParameter("size");
-        String pId = request.getParameter("productId");
-        int productCartId = Integer.parseInt(pId);
+        String id = request.getParameter("id");
+        int itemId = Integer.parseInt(id);
 
-        // Add the product to the shopping cart
+        // Remove the item from the shopping cart
         ShoppingCartItemDAO spcDAO = new ShoppingCartItemDAO();
-        spcDAO.addProductToShoppingCart(Quantity, size, productCartId, user.getId());
-        
-        // Update the cart items in the session
-        Map<ShoppingCartItem, Product> map = new HashMap<>();
+        spcDAO.removeProductFromShoppingCart(itemId);
+
         ArrayList<ShoppingCartItem> shoppingcart = spcDAO.getListItem(user.getId());
         ProductDAO dao = new ProductDAO();
         List<Product> productlist = dao.getAllProducts();
+
+        // Update the cart items in the session
+        Map<ShoppingCartItem, Product> map = new HashMap<>();
         for (ShoppingCartItem sci : shoppingcart) {
             for (Product p : productlist) {
                 if (p.getId() == sci.getProductid()) {
@@ -108,8 +106,10 @@ public class AddToCartController extends HttpServlet {
                 }
             }
         }
+        
         session.setAttribute("mapP", map);
 
+        // Redirect back to the cart page
         request.getRequestDispatcher("cart.jsp").include(request, response);
     }
 
