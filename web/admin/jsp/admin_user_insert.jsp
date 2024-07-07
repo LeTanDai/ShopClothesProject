@@ -1,9 +1,3 @@
-<%-- 
-    Document   : admin_products
-    Created on : Feb 19, 2024, 11:14:33 PM
-    Author     : HuuThanh
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -14,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Main CSS-->
-        <link rel="stylesheet" type="text/css" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="admin/css/main.css">
         <!-- Font-icon css-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
         <!-- or -->
@@ -156,42 +150,28 @@
         <main class="app-content">
             <div class="app-title">
                 <ul class="app-breadcrumb breadcrumb">
-                    <li class="breadcrumb-item">Danh sách người dùng</li>
-                    <li class="breadcrumb-item"><a href="">Tạo mới tài khoản</a></li>
+                    <li class="breadcrumb-item">List of Users</li>
+                    <li class="breadcrumb-item"><a href="">Add new account</a></li>
                 </ul>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="tile">
-                        <h3 class="tile-title">Tạo mới tài khoản</h3>
+                        <h3 class="tile-title">Add new account</h3>
                         <div class="tile-body">
                             <h3 style="color: green; text-align: center; margin: 20px 0">${requestScope.mess}</h3>
                             <h3 style="color: red; text-align: center; margin: 20px 0">${requestScope.error}</h3>
                             <form class="row" action="InsertUserServlet" method="get">
-                                <div class="form-group col-md-12">
-                                    <label class="control-label">Ảnh đại diện</label>
-                                    <div id="myfileupload">
-                                        <input type="file" id="uploadfile" multiple name="avatar" onchange="readURL(this);" />
-                                    </div>
-                                    <div id="thumbbox">
-                                        <img height="250" width="200" alt="Thumb image" id="thumbimage" style="display: none" />
-                                        <a class="removeimg" href="javascript:"></a>
-                                    </div>
-                                    <div id="boxchoice">
-                                        <a href="javascript:" class="Choicefile"><i class="fas fa-cloud-upload-alt"></i> Chọn ảnh</a>
-                                        <p style="clear:both"></p>
-                                    </div>
-                                </div>
                                 <div class="form-group  col-md-3">
-                                    <label class="control-label">Tên đầy đủ</label>
+                                    <label class="control-label">Full Name</label>
                                     <input class="form-control" required="" name="fullname" type="text">
                                 </div>
                                 <div class="form-group  col-md-3">
-                                    <label class="control-label">Tên người dùng</label>
+                                    <label class="control-label">Username</label>
                                     <input class="form-control" required="" name="username" type="text">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="control-label">Mật khẩu</label>
+                                    <label class="control-label">Password</label>
                                     <input class="form-control" required="" name="password" type="text">
                                 </div>
                                 <div class="form-group col-md-3">
@@ -199,24 +179,24 @@
                                     <input class="form-control" required="" name="email" type="text">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="control-label">Địa chỉ</label>
+                                    <label class="control-label">Address</label>
                                     <input class="form-control" required="" name="address" type="text">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="control-label">Số điện thoại</label>
+                                    <label class="control-label">Phone</label>
                                     <input class="form-control" required="" name="phone" type="text">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="exampleSelect1" class="control-label">Quyền quản trị</label>
+                                    <label for="exampleSelect1" class="control-label">Role</label>
                                     <select name="role" class="form-control" id="exampleSelect1">
                                         <option value="admin">Admin</option>
                                         <option value="user">User</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <button class="btn btn-save" type="submit">Lưu lại</button>
+                                    <button class="btn btn-save" type="submit">Save</button>
                                     &nbsp;
-                                    <a class="btn btn-cancel" href="ManageUserServlet">Hủy bỏ</a>
+                                    <a class="btn btn-cancel" href="ManageUserServlet">Cancle</a>
                                 </div>
                             </form>
                         </div>
@@ -225,12 +205,12 @@
             </div>
         </main>
 
-         <script src="../js/jquery-3.2.1.min.js"></script>
-        <script src="../js/popper.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/main.js"></script>
+         <script src="admin/js/jquery-3.2.1.min.js"></script>
+        <script src="admin/js/popper.min.js"></script>
+        <script src="admin/js/bootstrap.min.js"></script>
+        <script src="admin/js/main.js"></script>
         <!-- The javascript plugin to display page loading on top-->
-        <script src="../js/plugins/pace.min.js"></script>
+        <script src="admin/js/plugins/pace.min.js"></script>
     </body>
 
 </html>

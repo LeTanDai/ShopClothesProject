@@ -9,6 +9,8 @@ import entity.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -146,7 +148,95 @@ public class UserDAO extends DBContext {
             e.printStackTrace();
         }
         return count;
-     }
+    }
+     public void updateUser(int id, String name, String address, String phone, String email, int isSell, int isAdmin) {
+        String sql = "UPDATE Users SET name_user = ?, userAddress = ?, phone = ?, email = ?, isSell = ?, isAdmin = ? WHERE userId = ?";
+        try{
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, name);
+            st.setString(2, address);
+            st.setString(3, phone);
+            st.setString(4, email);
+            st.setInt(5, isSell);
+            st.setInt(6, isAdmin);
+            st.setInt(7, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public User getUserById(int id) {
+        String sql = "SELECT * FROM Users WHERE userId = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("userId"),
+                        rs.getString("userName"),
+                        rs.getString("name_user"),
+                        rs.getString("pass"),
+                        rs.getString("userAddress"),
+                        rs.getString("phone"),
+                        rs.getString("email"),
+                        rs.getInt("isSell"),
+                        rs.getInt("isAdmin")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public void insertUser(User u) {
+        String sql = "INSERT INTO [dbo].[Users]([userName],[name_user],[pass],[userAddress],[phone],[email],[isSell],[isAdmin])"
+                + "VALUES (?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, u.getUsername());
+            st.setString(2, u.getName());
+            st.setString(3, u.getPassword());
+            st.setString(4, u.getAddress());
+            st.setString(5, u.getPhone());
+            st.setString(6, u.getEmail());
+            st.setInt(7, u.getIsSell());
+            st.setInt(8, u.getIsAdmin());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void deleteUser(String uid) {
+        String sql = "Delete from [dbo].[Users]"
+                + "where userId = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, uid);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public List<User> getAllUsers() {
+        List<User> list = new ArrayList<>();
+        String sql = "Select * from Users";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                User user = new User(rs.getInt("userId"), rs.getString("userName"), rs.getString("name_user"), rs.getString("pass"), rs.getString("userAddress"), rs.getString("phone"), rs.getString("email"), rs.getInt("isSell"), rs.getInt("isAdmin"));
+                list.add(user);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
      
      public static void main(String[] args) {
         UserDAO u = new UserDAO();
