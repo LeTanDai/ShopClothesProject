@@ -8,7 +8,7 @@
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
         <!-- User Menu-->
-        <li><a class="app-nav__item" href="DispatchServlet"><i class='bx bx-log-out bx-rotate-180'></i> </a>
+        <li><a class="app-nav__item" href="HomeController"><i class='bx bx-log-out bx-rotate-180'></i> </a>
 
         </li>
     </ul>
@@ -25,15 +25,15 @@
     <hr>
     <ul class="app-menu">
         <li><a class="app-menu__item ${requestScope.CURRENTSERVLET == "Home" ? "active" : ""}" href="HomeController"><i class='app-menu__icon bx bx-home'></i><span
-                    class="app-menu__label">Trang chủ</span></a></li>
+                    class="app-menu__label">Home</span></a></li>
         <li><a class="app-menu__item ${requestScope.CURRENTSERVLET == "Dashboard" ? "active" : ""}" href="AdminServlet"><i class='app-menu__icon bx bx-tachometer'></i><span
-                    class="app-menu__label">Thống kê</span></a></li>
+                    class="app-menu__label">Dashboard</span></a></li>
         <li><a class="app-menu__item ${requestScope.CURRENTSERVLET == "User" ? "active" : ""}" href="ManageUserServlet"><i class='app-menu__icon bx bx-user-voice'></i><span
-                    class="app-menu__label">Quản lý khách hàng</span></a></li>
+                    class="app-menu__label">Manage User</span></a></li>
         <li><a class="app-menu__item ${requestScope.CURRENTSERVLET == "Product" ? "active" : ""}" href="ManageProductServlet"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span 
-                    class="app-menu__label">Quản lý sản phẩm</span></a></li>
+                    class="app-menu__label">Manage Product</span></a></li>
         <li><a class="app-menu__item ${requestScope.CURRENTSERVLET == "Order" ? "active" : ""}" href="ManageOrderServlet"><i class='app-menu__icon bx bx-task'></i><span
-                    class="app-menu__label">Quản lý đơn hàng</span></a></li>
+                    class="app-menu__label">Manage Order</span></a></li>
 
     </ul>
 </aside>
