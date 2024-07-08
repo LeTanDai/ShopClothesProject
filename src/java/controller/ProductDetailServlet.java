@@ -6,6 +6,7 @@
 package controller;
 
 import dao.ProductDAO;
+import entity.Category;
 import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -71,7 +73,8 @@ public class ProductDetailServlet extends HttpServlet {
         // Retrieve the product from the database based on the ID
         ProductDAO productDAO = new ProductDAO();
         Product selectedProduct = productDAO.getProductByProductId(id);
-        
+        List<Category> listC = productDAO.getAllCategory();
+        request.setAttribute("listC", listC);
         if (selectedProduct == null) {
             // Handle the case where the product is not found
             response.getWriter().println("Product not found");
