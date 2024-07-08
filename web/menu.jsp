@@ -81,11 +81,13 @@
                             <li>
                                 <a href="HomeController">Home</a>
                             </li>
-                            <li><a href="./products.jsp">Products</a>					
+                            <li><a>Products</a>					
                                 <ul>
                                     <c:forEach items="${listC}" var="category">
-                                        <li><a href="./products.jsp">${category.cname}</a></li>								
-                                        </c:forEach>								
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/searchbycategory?txt=${category.cname}">${category.cname}</a>
+                                        </li>								
+                                    </c:forEach>								
                                 </ul>
                             </li>																
                             <li><a href="InfoController">Contact Us</a></li>

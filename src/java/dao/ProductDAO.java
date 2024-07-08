@@ -100,6 +100,29 @@ public class ProductDAO extends DBContext {
         }
         return list;
     }
+    
+    public List<Product> searchByCategory(String categoryName) {
+        String query = "SELECT p.productId, p.prod_name, p.price, p.prod_image, p.descriptions, p.quantity, c.prod_category_id, c.prod_category_name "
+                + "FROM Product p "
+                + "JOIN Product_category c ON p.prod_category_id = c.prod_category_id "
+                + "WHERE c.prod_category_name = ?";
+        List<Product> list = new ArrayList<>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, categoryName);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Category category = new Category(rs.getInt("prod_category_id"), rs.getString("prod_category_name"));
+                Product product = new Product(rs.getInt("productId"), rs.getString("prod_name"),
+                        rs.getString("prod_image"), rs.getString("descriptions"),
+                        rs.getDouble("price"), rs.getInt("quantity"), category);
+                list.add(product);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         ProductDAO productDAO = new ProductDAO();
