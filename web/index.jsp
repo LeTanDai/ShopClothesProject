@@ -40,10 +40,10 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <li>
-                            <img src="themes/images/carousel/banner-1.jpg" alt="" />
+                            <img src="themes/images/carousel/banner2.jpg" alt="" />
                         </li>
                         <li>
-                            <img src="themes/images/carousel/banner-2.jpg" alt="" />
+                            <img src="themes/images/carousel/banner1.jpg" alt="" />
                             <div class="intro">
                                 <h1>Mid season sale</h1>
                                 <p><span>Up to 50% Off</span></p>
@@ -54,8 +54,8 @@
                 </div>			
             </section>
             <section class="header_text">
-                We stand for top quality templates. Our genuine developers always optimized bootstrap commercial templates. 
-                <br/>Don't miss to use our cheap abd best bootstrap templates.
+                Choose our men's clothing store for top-quality apparel and an exceptional shopping experience.
+                <br/>Trust us to make your shopping experience rewarding and enjoyable.
             </section>
             <section class="main-content">
                 <div class="row">

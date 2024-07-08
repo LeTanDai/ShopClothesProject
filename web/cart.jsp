@@ -36,7 +36,7 @@
     <body>		
         <jsp:include page="menu.jsp"></jsp:include>				
             <section class="header_text sub">
-                <img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
+                <img class="pageBanner" src="themes/images/pageBanner.jpg" alt="New products" >
                 <h4><span>Shopping Cart</span></h4>
             </section>
             <section class="main-content">				
