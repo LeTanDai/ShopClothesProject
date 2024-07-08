@@ -5,6 +5,7 @@
 package controller;
 
 import dao.ProductDAO;
+import dao.ShoppingCartDAO;
 import dao.ShoppingCartItemDAO;
 import entity.Product;
 import entity.ShoppingCartItem;
@@ -94,7 +95,8 @@ public class AddToCartController extends HttpServlet {
 
         // Add the product to the shopping cart
         ShoppingCartItemDAO spcDAO = new ShoppingCartItemDAO();
-        spcDAO.addProductToShoppingCart(Quantity, size, productCartId, user.getId());
+        ShoppingCartDAO spDAO = new ShoppingCartDAO();
+        spcDAO.addProductToShoppingCart(Quantity, size, productCartId, spDAO.getShoppingCartByUserId(user.getId()).getId());
         
         // Update the cart items in the session
         Map<ShoppingCartItem, Product> map = new HashMap<>();

@@ -5,6 +5,7 @@
 
 package controller;
 
+import dao.ShoppingCartDAO;
 import dao.UserDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -35,6 +36,8 @@ public class SignupController extends HttpServlet {
         String password = request.getParameter("pass");
         String re_pass = request.getParameter("repass");
         String email = request.getParameter("email");
+        
+        ShoppingCartDAO spDAO = new ShoppingCartDAO();
         if(!password.equals(re_pass)){
             response.sendRedirect("login.jsp");
         }else{
@@ -42,6 +45,8 @@ public class SignupController extends HttpServlet {
             User user = loginDAO.checkAccountExist(username);
             if(user == null){
                 loginDAO.signup(username, password,email);
+                User u = loginDAO.getUserByUsername(username);
+                spDAO.addShoppingCart(u.getId());
                 response.sendRedirect("HomeController");
             }else{
                 response.sendRedirect("login.jsp");
