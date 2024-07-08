@@ -30,7 +30,7 @@
                 <div class="col-md-12">
                     <div class="app-title">
                         <ul class="app-breadcrumb breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><b>Bảng điều khiển</b></a></li>
+                            <li class="breadcrumb-item"><a href="#"><b>Control Panel</b></a></li>
                         </ul>
                         <div id="clock"></div>
                     </div>
@@ -43,9 +43,9 @@
                         <div class="col-md-6">
                             <div class="widget-small primary coloured-icon"><i class='icon bx bxs-user-account fa-3x'></i>
                                 <div class="info">
-                                    <h4>Tổng khách hàng</h4>
-                                    <p><b>${requestScope.TOTALUSERS} khách hàng</b></p>
-                                    <p class="info-tong">Tổng số khách hàng được quản lý.</p>
+                                    <h4>Total Customers</h4>
+                                    <p><b>${requestScope.TOTALUSERS} customers</b></p>
+                                    <p class="info-tong">Total number of managed customers.</p>
                                 </div>
                             </div>
                         </div>
@@ -53,9 +53,9 @@
                         <div class="col-md-6">
                             <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
                                 <div class="info">
-                                    <h4>Tổng sản phẩm</h4>
-                                    <p><b>${requestScope.TOTALPRODUCTS} sản phẩm</b></p>
-                                    <p class="info-tong">Tổng số sản phẩm được quản lý.</p>
+                                    <h4>Total Products</h4>
+                                    <p><b>${requestScope.TOTALPRODUCTS} products</b></p>
+                                    <p class="info-tong">Total number of managed products.</p>
                                 </div>
                             </div>
                         </div>
@@ -63,9 +63,9 @@
                         <div class="col-md-6">
                             <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
                                 <div class="info">
-                                    <h4>Tổng đơn hàng</h4>
-                                    <p><b>${requestScope.TOTALORDERS} đơn hàng</b></p>
-                                    <p class="info-tong">Tổng số hóa đơn bán hàng trong tháng.</p>
+                                    <h4>Total Orders</h4>
+                                    <p><b>${requestScope.TOTALORDERS} orders</b></p>
+                                    <p class="info-tong">Total number of sales orders in the month.</p>
                                 </div>
                             </div>
                         </div>
@@ -73,16 +73,16 @@
                         <div class="col-md-6">
                             <div class="widget-small danger coloured-icon"><i class='icon bx bxs-error-alt fa-3x'></i>
                                 <div class="info">
-                                    <h4>Sắp hết hàng</h4>
-                                    <p><b>0 sản phẩm</b></p>
-                                    <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
+                                    <h4>Low Stock</h4>
+                                    <p><b>0 products</b></p>
+                                    <p class="info-tong">Number of products that are running low and need to be restocked.</p>
                                 </div>
                             </div>
                         </div>
                         <!-- col-12 -->
                         <div class="col-md-12">
                             <div class="tile">
-                                <h3 class="tile-title">Đơn hàng gần đây</h3>
+                                <h3 class="tile-title">Recent Orders</h3>
                                 <div>
                                     <table class="table table-bordered">
                                         <thead>

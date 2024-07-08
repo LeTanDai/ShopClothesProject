@@ -19,7 +19,7 @@
     <div class="app-sidebar__user">
         <div>
             <p class="app-sidebar__user-name"><b>${sessionScope.account.name}</b></p>
-            <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
+            <p class="app-sidebar__user-designation">Welcome back!</p>
         </div>
     </div>
     <hr>
