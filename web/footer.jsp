@@ -39,20 +39,18 @@
                 <div class="span3">
                     <h4>Navigation</h4>
                     <ul class="nav">
-                        <li><a href="./index.jsp">Homepage</a></li>  
-                        <li><a href="./about.jsp">About Us</a></li>
-                        <li><a href="./contact.jsp">Contac Us</a></li>
-                        <li><a href="./cart.jsp">Your Cart</a></li>
-                        <li><a href="./register.jsp">Login</a></li>							
+                        <li><a href="HomeController">Homepage</a></li>                         
+                        <li><a href="contact.jsp">Contac Us</a></li>
+                        <li><a href="cart.jsp">Your Cart</a></li>
+                        <li><a href="login.jsp">Login</a></li>							
                     </ul>					
                 </div>
                 <div class="span4">
                     <h4>My Account</h4>
                     <ul class="nav">
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Order History</a></li>
-                        <li><a href="#">Wish List</a></li>
-                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="editProfile.jsp">My Account</a></li>
+                        <li><a href="orderHistory.jsp">Order History</a></li>
+                        <li><a href="cart.jsp">Wish List</a></li>   
                     </ul>
                 </div>
                 <div class="span5">
