@@ -107,7 +107,7 @@ public class HomeFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         String url = req.getServletPath();
-        if (url.endsWith(".jsp")) {
+        if (url.equals("/index.jsp")) {
             res.sendRedirect("HomeController");
         }
         
