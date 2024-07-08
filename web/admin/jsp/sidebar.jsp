@@ -24,7 +24,7 @@
     </div>
     <hr>
     <ul class="app-menu">
-        <li><a class="app-menu__item ${requestScope.CURRENTSERVLET == "Home" ? "active" : ""}" href="DispatchServlet"><i class='app-menu__icon bx bx-home'></i><span
+        <li><a class="app-menu__item ${requestScope.CURRENTSERVLET == "Home" ? "active" : ""}" href="HomeController"><i class='app-menu__icon bx bx-home'></i><span
                     class="app-menu__label">Trang chủ</span></a></li>
         <li><a class="app-menu__item ${requestScope.CURRENTSERVLET == "Dashboard" ? "active" : ""}" href="AdminServlet"><i class='app-menu__icon bx bx-tachometer'></i><span
                     class="app-menu__label">Thống kê</span></a></li>
