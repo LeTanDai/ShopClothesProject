@@ -97,20 +97,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach var="entry" items="${MapOrder}">
+                                            <c:forEach var="entry" items="${MapOrder}" begin="0" end="9">
                                                 <tr>
                                                     <td>${entry.key.id}</td>
                                                     <td>${entry.key.date}</td>
                                                     <td>${entry.key.status}</td>
-                                                    <td>
-                                                        ${entry.key.total}
-                                                    </td>
-                                                    <td>
-                                                        ${entry.key.total}
-                                                    </td>
+                                                    <td>${entry.key.total}</td>
+                                                    <td>${entry.key.total}</td>
                                                     <td>
                                                         <c:forEach var="product" items="${entry.value}">
-                                                            <img style="margin-bottom: 10px" src="${product.image}" width="100px" height="100px" alt="Product Image" class="img-fluid img-thumbnail"/></br>
+                                                            <img style="margin-bottom: 10px" src="${product.image}" width="100px" height="100px" alt="Product Image" class="img-fluid img-thumbnail" /><br />
                                                         </c:forEach>
                                                     </td>
                                                     <td>${entry.key.address_shipping}</td>
