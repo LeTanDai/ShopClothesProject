@@ -6,6 +6,10 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="dao.OrderDAO" %>
+<%@page import="entity.Order" %>
+<%@page import="entity.Product" %>
+<%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -90,7 +94,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="entry" items="${mapOrder}">
+                        
+                       <c:forEach var="entry" items="${mapOrder}">
                             <tr>
                                 <td>${entry.key.id}</td>
                                 <td>${entry.key.date}</td>
@@ -100,8 +105,7 @@
                                 </td>
                                 <td>
                                     <c:forEach var="product" items="${entry.value}">
-                                        <img src="${product.image}" width="100px" height="100px" alt="Product Image" class="img-fluid img-thumbnail"/></br>
-                                    
+                                        <img style="margin-bottom: 10px" src="${product.image}" width="100px" height="100px" alt="Product Image" class="img-fluid img-thumbnail"/></br>
                                     </c:forEach>
                                 </td>
                                 <td>${entry.key.address_shipping}</td>

@@ -21,6 +21,7 @@ import jakarta.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,10 +72,11 @@ public class OrderHistoryServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("account");
         ArrayList<Product> listP = new ArrayList<>();
-        Map<Order, ArrayList<Product>> map = new HashMap<>();
+        Map<Order, ArrayList<Product>> map = new LinkedHashMap<>();
         Order orderr = new Order();
         OrderDAO orderdao = new OrderDAO();
         ArrayList<Integer> orderid = orderdao.getOrderidByUserid(user.getId());
+        orderid.sort((Integer a, Integer b ) -> Integer.compare(b, a));
         for (int order : orderid) {
             listP = orderdao.getallProductbyOrderid(order);
             orderr = orderdao.getOrderbyOrderid(order);
@@ -105,15 +107,16 @@ public class OrderHistoryServlet extends HttpServlet {
         java.sql.Date sqlDate = java.sql.Date.valueOf(currentDate);
         if (orderdao.addOrder(sqlDate, user.getId(), (double) session.getAttribute("total"), "Processing", user.getAddress())) {
             ArrayList<Integer> orderid = orderdao.getOrderidByUserid(user.getId());
+            orderid.sort((Integer a, Integer b ) -> Integer.compare(b, a));
             List<Product> neworder = scidao.getProductByShoppingCartItem(user.getId());
             ArrayList<Integer> productid = new ArrayList<>();
             for (Product p : neworder) {
                 productid.add(p.getId());
                 scidao.removeProductFromShoppingCartByProductId(p.getId());
             }
-            orderdao.addOrderProduct(orderid.get(orderid.size() - 1), productid);
+            orderdao.addOrderProduct(orderid.get(0), productid);
             ArrayList<Product> listP = new ArrayList<>();
-            Map<Order, ArrayList<Product>> map = new HashMap<>();
+            Map<Order, ArrayList<Product>> map = new LinkedHashMap<>();
             Order orderr = new Order();
             for (int order : orderid) {
                 listP = orderdao.getallProductbyOrderid(order);
@@ -121,6 +124,8 @@ public class OrderHistoryServlet extends HttpServlet {
                 map.put(orderr, listP);
             }
             request.setAttribute("mapOrder", map);
+            request.setAttribute("oDao", orderdao);
+            request.setAttribute("orderidsorted", orderid);
             request.getRequestDispatcher("orderHistory.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("BillingDetail.jsp").forward(request, response);
