@@ -100,7 +100,11 @@ public class LoginController extends HttpServlet {
             response.addCookie(cuser);
             response.addCookie(cpass);
             response.addCookie(crem);
-            response.sendRedirect("HomeController");
+            if (u.getIsAdmin() == 1) {
+                response.sendRedirect("AdminServlet");
+            } else {
+                response.sendRedirect("HomeController");
+            }
         }
     }
 

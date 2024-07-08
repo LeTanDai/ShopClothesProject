@@ -42,7 +42,7 @@
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
-                             <c:if test="${sessionScope.account != null}">
+                            <c:if test="${sessionScope.account != null}">
                                 <li>
                                     <a href="editProfile.jsp">My Account</a>
                                 </li>
@@ -51,7 +51,14 @@
                             <li><a href="checkout.jsp">Checkout</a></li>
                                 <c:if test="${sessionScope.account != null}">
                                 <li>
-                                    <a href="#">Hello ${sessionScope.account.username}</a>
+                                    <c:choose>
+                                        <c:when test="${sessionScope.account.isAdmin == 1}">
+                                            <a href="AdminServlet">Hello ${sessionScope.account.username}</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="#">Hello ${sessionScope.account.username}</a>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </li>
                                 <li>
                                     <a href="logout">Logout</a>
