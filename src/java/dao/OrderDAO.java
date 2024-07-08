@@ -59,7 +59,7 @@ public class OrderDAO extends DBContext {
         return orderid;
     }
 
-    public boolean addOrderProduct(int orderid, ArrayList<Integer> productid) {
+    public void addOrderProduct(int orderid, ArrayList<Integer> productid) {
         String sql = "insert into Order_Product values(?,?)";
         try {
             PreparedStatement state = connection.prepareStatement(sql);
@@ -69,11 +69,9 @@ public class OrderDAO extends DBContext {
                 state.execute();
             }
             state.close();
-            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     public ArrayList<Product> getallProductbyOrderid(int orderid) {
