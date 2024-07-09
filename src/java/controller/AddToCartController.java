@@ -7,6 +7,7 @@ package controller;
 import dao.ProductDAO;
 import dao.ShoppingCartDAO;
 import dao.ShoppingCartItemDAO;
+import entity.Category;
 import entity.Product;
 import entity.ShoppingCartItem;
 import entity.User;
@@ -110,6 +111,9 @@ public class AddToCartController extends HttpServlet {
                 }
             }
         }
+        ProductDAO p = new ProductDAO();
+        List<Category>listP = p.getAllCategory();
+        request.setAttribute("listC", listP);
         session.setAttribute("mapP", map);
 
         request.getRequestDispatcher("cart.jsp").include(request, response);

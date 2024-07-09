@@ -7,6 +7,7 @@ package controller;
 import dao.OrderDAO;
 import dao.ProductDAO;
 import dao.ShoppingCartItemDAO;
+import entity.Category;
 import entity.Order;
 import entity.Product;
 import entity.ShoppingCartItem;
@@ -43,7 +44,7 @@ public class OrderHistoryServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -76,7 +77,7 @@ public class OrderHistoryServlet extends HttpServlet {
         Order orderr = new Order();
         OrderDAO orderdao = new OrderDAO();
         ArrayList<Integer> orderid = orderdao.getOrderidByUserid(user.getId());
-        orderid.sort((Integer a, Integer b ) -> Integer.compare(b, a));
+        orderid.sort((Integer a, Integer b) -> Integer.compare(b, a));
         for (int order : orderid) {
             listP = orderdao.getallProductbyOrderid(order);
             orderr = orderdao.getOrderbyOrderid(order);
@@ -107,7 +108,7 @@ public class OrderHistoryServlet extends HttpServlet {
         java.sql.Date sqlDate = java.sql.Date.valueOf(currentDate);
         if (orderdao.addOrder(sqlDate, user.getId(), (double) session.getAttribute("total"), "Processing", user.getAddress())) {
             ArrayList<Integer> orderid = orderdao.getOrderidByUserid(user.getId());
-            orderid.sort((Integer a, Integer b ) -> Integer.compare(b, a));
+            orderid.sort((Integer a, Integer b) -> Integer.compare(b, a));
             List<Product> neworder = scidao.getProductByShoppingCartItem(user.getId());
             ArrayList<Integer> productid = new ArrayList<>();
             for (Product p : neworder) {
@@ -126,6 +127,9 @@ public class OrderHistoryServlet extends HttpServlet {
             request.setAttribute("mapOrder", map);
             request.setAttribute("oDao", orderdao);
             request.setAttribute("orderidsorted", orderid);
+            ProductDAO p = new ProductDAO();
+            List<Category> list = p.getAllCategory();
+            request.setAttribute("listC", list);
             request.getRequestDispatcher("orderHistory.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("BillingDetail.jsp").forward(request, response);
