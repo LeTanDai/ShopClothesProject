@@ -4,10 +4,26 @@
         <filter-name>LoginFilter</filter-name>
         <filter-class>filter.LoginFilter</filter-class>
     </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/AdminServlet</url-pattern>
+        <url-pattern>/EditProfileController</url-pattern>
+    </filter-mapping>
     <filter>
         <filter-name>HomeFilter</filter-name>
         <filter-class>filter.HomeFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/AdminServlet</url-pattern>
+        <url-pattern>/ManageUserServlet</url-pattern>
+        <url-pattern>/ManageProductServlet</url-pattern>
+        <url-pattern>/ManageOrderServlet</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>HomeFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -16,12 +32,6 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.HomeController</servlet-class>
     </servlet>
-    <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <url-pattern>/AdminServlet</url-pattern>
-        <url-pattern>/EditProfileController</url-pattern>
-        <url-pattern>/forgotPassword</url-pattern>
-    </filter-mapping>
     <servlet>
         <servlet-name>OrderHistoryServlet</servlet-name>
         <servlet-class>controller.OrderHistoryServlet</servlet-class>
