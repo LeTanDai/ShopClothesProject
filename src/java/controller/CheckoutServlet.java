@@ -6,6 +6,7 @@ package controller;
 
 import dao.ProductDAO;
 import dao.ShoppingCartItemDAO;
+import entity.Category;
 import entity.Product;
 import entity.ShoppingCartItem;
 import entity.User;
@@ -39,7 +40,7 @@ public class CheckoutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -81,8 +82,8 @@ public class CheckoutServlet extends HttpServlet {
             for (ShoppingCartItem sci : shoppingcart) {
                 for (Product p : productlist) {
                     if (p.getId() == sci.getProductid()) {
-                        if ( counteachproducttotal == 0 ) {
-                            total += ( p.getPrice() * sci.getQuantity());
+                        if (counteachproducttotal == 0) {
+                            total += (p.getPrice() * sci.getQuantity());
                             counteachproducttotal++;
                         }
                         prepareOrder.add(p);
@@ -91,11 +92,13 @@ public class CheckoutServlet extends HttpServlet {
                     counteachproducttotal = 0;
                 }
             }
+            List<Category> listC = dao.getAllCategory();
+            request.setAttribute("listC", listC);
             session.setAttribute("account", user);
             session.setAttribute("total", total);
             request.setAttribute("total", total);
             request.setAttribute("mapPP", map);
-           request.getRequestDispatcher("checkout.jsp").forward(request, response);
+            request.getRequestDispatcher("checkout.jsp").forward(request, response);
         }
     }
 
