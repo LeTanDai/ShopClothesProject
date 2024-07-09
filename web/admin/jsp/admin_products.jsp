@@ -1,8 +1,3 @@
-<%-- 
-    Document   : admin_products
-    Created on : Feb 19, 2024, 11:14:33 PM
-    Author     : HuuThanh
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -47,7 +42,7 @@
         <main class="app-content">
             <div class="app-title">
                 <ul class="app-breadcrumb breadcrumb side">
-                    <li class="breadcrumb-item active"><a href="#"><b>Danh sách sản phẩm</b></a></li>
+                    <li class="breadcrumb-item active"><a href="#"><b>List of Product</b></a></li>
                 </ul>
                 <div id="clock"></div>
             </div>
@@ -58,7 +53,7 @@
                             <div class="row element-button">
                                 <div class="col-sm-2">
                                     <a class="btn btn-add btn-sm" href="ManageProductServlet?action=Insert" title="Thêm"><i class="fas fa-plus"></i>
-                                        Tạo mới sản phẩm</a>
+                                        Add new Product</a>
                                 </div>
                             </div>
                             <h3 style="color: green; text-align: center; margin: 20px 0">${requestScope.mess}</h3>
@@ -66,13 +61,13 @@
                                 <table class="table table-hover table-bordered" id="sampleTable">
                                     <thead>
                                         <tr>
-                                            <th>Mã sản phẩm</th>
-                                            <th>Danh mục</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Giá</th>
-                                            <th>Số lượng</th>
-                                            <th>Ảnh</th>
-                                            <th>Chức năng</th>
+                                            <th>Product Code</th>
+                                            <th>Category</th>
+                                            <th>Product Name</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Image</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -119,14 +114,14 @@
                                                             let modalElement = document.getElementById(modalID);
                                                             let modal = '<div class="modal-dialog modal-dialog-centered" role="document" style="text-align:center">' +
                                                                     '<div class="modal-content" style="width:500px; margin: 0 auto">' +
-                                                                    '<div class="modal-header" style="color: black; font-size:28px; font-weight: 600; margin: 15px auto">Cảnh báo</div>' +
-                                                                    '<div class="swal-text">Bạn có chắc chắn là muốn xóa sản phẩm này?</div>' +
+                                                                    '<div class="modal-header" style="color: black; font-size:28px; font-weight: 600; margin: 15px auto">Warning</div>' +
+                                                                    '<div class="swal-text">Are you sure you want to delete this product?</div>' +
                                                                     '<div class="swal-footer">' +
                                                                     '<div class="swal-button-container">' +
-                                                                    '<button data-dismiss="modal" aria-hidden="true" class="swal-button swal-button--cancel">Hủy bỏ</button>' +
+                                                                    '<button data-dismiss="modal" aria-hidden="true" class="swal-button swal-button--cancel">Cancle</button>' +
                                                                     '</div>' +
                                                                     '<div class="swal-button-container">' +
-                                                                    '<a href="DeleteProductServlet?pid=' + pid + '" class="swal-button swal-button--confirm">Xác nhận</a>' +
+                                                                    '<a href="DeleteProductServlet?pid=' + pid + '" class="swal-button swal-button--confirm">Confirm</a>' +
                                                                     '</div>' +
                                                                     '</div>' +
                                                                     '</div>' +

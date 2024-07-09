@@ -1,9 +1,3 @@
-<%-- 
-    Document   : admin_order
-    Created on : Feb 21, 2024, 11:42:03 PM
-    Author     : lvhho
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -50,7 +44,7 @@
         <main class="app-content">
             <div class="app-title">
                 <ul class="app-breadcrumb breadcrumb side">
-                    <li class="breadcrumb-item active"><a href="#"><b>Danh sách đơn hàng</b></a></li>
+                    <li class="breadcrumb-item active"><a href="#"><b>List Of Order</b></a></li>
                 </ul>
                 <div id="clock"></div>
             </div>
@@ -61,20 +55,20 @@
                             <div class="row element-button"
                                  <div class="col-sm-2">
                                     <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i
-                                            class="fas fa-print"></i> In dữ liệu</a>
+                                            class="fas fa-print"></i>Print</a>
                                 </div>
                             </div>
                             <table class="table table-hover table-bordered" id="sampleTable">
                                 <thead>
                                     <tr>
-                                        <th>ID đơn hàng</th>
-                                        <th>Khách hàng</th>
-                                        <th>Số điện thoại</th>
-                                        <th>Địa chỉ</th>
-                                        <th>Ngày mua</th>
-                                        <th>Tổng tiền</th>
-                                        <th>Trạng thái</th>
-                                        <th>Tính năng</th>
+                                        <th>ID</th>
+                                        <th>Customer</th>
+                                        <th>Phone Number</th>
+                                        <th>Address</th>
+                                        <th>Purchase Date</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,7 +83,7 @@
                                             <td>
                                                 ${b.key.status}
                                             </td>
-                                            <td><a style=" color: rgb(245 157 57);background-color: rgb(251 226 197); padding: 5px;border-radius: 5px;" href="ManageOrderServlet?action=showdetail&bill_id=${b.key.id}"><i class="fa"></i>Chi tiết đơn hàng</a></td>
+                                            <td><a style=" color: rgb(245 157 57);background-color: rgb(251 226 197); padding: 5px;border-radius: 5px;" href="ManageOrderServlet?action=showdetail&bill_id=${b.key.id}"><i class="fa"></i>Order Detail</a></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

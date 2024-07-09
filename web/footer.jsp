@@ -40,34 +40,27 @@
                     <h4>Navigation</h4>
                     <ul class="nav">
                         <li><a href="HomeController">Homepage</a></li>                         
-                        <li><a href="contact.jsp">Contac Us</a></li>
+                        <li><a href="InfoController">Contac Us</a></li>
                         <li><a href="cart.jsp">Your Cart</a></li>
-                        <li><a href="login.jsp">Login</a></li>							
+                        <li><a href="login">Login</a></li>							
                     </ul>					
                 </div>
                 <div class="span4">
                     <h4>My Account</h4>
                     <ul class="nav">
                         <li><a href="editProfile.jsp">My Account</a></li>
-                        <li><a href="orderHistory.jsp">Order History</a></li>
+                        <li><a href="OrderHistoryServlet">Order History</a></li>
                         <li><a href="cart.jsp">Wish List</a></li>   
                     </ul>
                 </div>
                 <div class="span5">
                     <p class="logo"><img src="themes/images/logo.png" class="site_logo" alt=""></p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
-                    <br/>
-                    <span class="social_icons">
-                        <a class="facebook" href="#">Facebook</a>
-                        <a class="twitter" href="#">Twitter</a>
-                        <a class="skype" href="#">Skype</a>
-                        <a class="vimeo" href="#">Vimeo</a>
-                    </span>
+                    <p>Discover the latest in men's fashion at shopper. From classic styles to modern trends, we offer a wide range of apparel to elevate your wardrobe.</p>
                 </div>					
             </div>	
         </section>
-        <section id="copyright">
-            <span>Copyright 2013 bootstrappage template  All right reserved.</span>
+        <section id="copyright" style="text-align: center">
+            <span>Shopper Team</span>
         </section>
     </body>
 </html>

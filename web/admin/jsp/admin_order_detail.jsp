@@ -1,9 +1,3 @@
-<%-- 
-    Document   : admin_order_detail
-    Created on : Feb 24, 2024, 1:30:11 PM
-    Author     : lvhho
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -47,7 +41,7 @@
         <main class="app-content">
             <div class="app-title">
                 <ul class="app-breadcrumb breadcrumb side">
-                    <li class="breadcrumb-item active"><a href="#"><b>Chi tiết đơn hàng</b></a></li>
+                    <li class="breadcrumb-item active"><a href="#"><b>Order Detail</b></a></li>
                 </ul>
                 <div id="clock"></div>
             </div>
@@ -58,17 +52,17 @@
                             <div class="row element-button">
                                 <div class="col-sm-2">
                                     <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i
-                                            class="fas fa-print"></i> In dữ liệu</a>
+                                            class="fas fa-print"></i>Print</a>
                                 </div>
                             </div>
                             <table class="table table-hover table-bordered" id="sampleTable">
                                 <thead>
                                     <tr>
-                                        <th>Ảnh</th>
-                                        <th>Mã sản phẩm</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Số lượng</th>
-                                        <th>Đơn giá</th>
+                                        <th>Image</th>
+                                        <th>Product Code</th>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th>Unit Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>

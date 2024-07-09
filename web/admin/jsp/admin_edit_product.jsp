@@ -37,23 +37,23 @@
                             <div class="row">
                                 <div class="form-group  col-md-12">
                                     <span class="thong-tin-thanh-toan">
-                                        <h5>Chỉnh sửa thông tin sản phẩm</h5>
+                                        <h5>Edit product information</h5>
                                     </span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label class="control-label">Mã sản phẩm</label>
+                                    <label class="control-label">Product Code</label>
                                     <input class="form-control" type="text" readonly name="product_id" value="${product.id}">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label class="control-label">Số lượng</label>
+                                    <label class="control-label">Quantity</label>
                                     <input class="form-control" type="text" name="product_stock" value="${product.quantity}">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="exampleSelect1" class="control-label">Danh mục</label>
+                                    <label for="exampleSelect1" class="control-label">Category</label>
                                     <select name="category_id" class="form-control" id="exampleSelect1">
                                         <c:forEach items="${requestScope.LIST_CATEGORIES}" var="cat">
                                             <option ${cat.cid == pcategory.cid ? "selected" : ""} value="${cat.getCid()}">${cat.getCname()}</option>
@@ -61,32 +61,31 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="control-label">Tên sản phẩm</label>
+                                    <label class="control-label">Product Name</label>
                                     <input class="form-control" type="text" name="product_name" required value="${product.name}">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="control-label">Giá</label>
+                                    <label class="control-label">Price</label>
                                     <input class="form-control" type="number" name="product_price" required value="${product.price}">
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <label class="control-label">Thông tin</label>
+                                    <label class="control-label">Description</label>
                                     <textarea class="form-control" type="text" name="product_description">${product.description}</textarea>
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <label class="control-label">Ảnh sản phẩm</label>
-                                    <div id="myfileupload">
-                                        <input multiple type="file" id="uploadfile" name="product_img" value="${imgae}" onchange="readURL(this);" />
-                                    </div>
-                                    <div id="thumbbox">
-                                        <img height="450" width="400" alt="Thumb image" id="thumbimage" style="display: none" />
-                                        <a class="removeimg" href="javascript:"></a>
+                                    <label class="control-label">Image</label>
+                                  
+                         
+                                    <div id="boxchoice">
+                                        <input class="form-control" type="text" value="${product.image}" id="image-url-input" name="product_img" placeholder="Enter image URL">
+                                        <p style="clear:both"></p>
                                     </div>
                                 </div>
                             </div>
                             <BR>
-                            <button onclick="setValue()" class="btn btn-save" name="action" value="update" type="submit">Lưu lại</button>
-                            <a class="btn btn-cancel" data-dismiss="modal" href="ManageProductServlet">Hủy bỏ</a>
+                            <button onclick="setValue()" class="btn btn-save" name="action" value="update" type="submit">Save</button>
+                            <a class="btn btn-cancel" data-dismiss="modal" href="ManageProductServlet">Cancle</a>
                             <BR>
                         </div>
                     </div>
